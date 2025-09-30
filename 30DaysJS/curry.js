@@ -3,9 +3,9 @@ let curry = function (fn) {
 
     if (args.length === fn.length) {            //if csum(a,b,c,d) then it's just that...
       return fn(...args);
-    } 
-    else
-      {
+      
+    }else{
+
       return function (...newArgs) {
         return curried(...args, newArgs);      //if csum(a,b)(c)(d) then recursion until all the a, b, c, d (fn.length) is there
       };
@@ -17,7 +17,7 @@ let curry = function (fn) {
 function sum(a, b, c, d) {
   return parseInt(a) + parseInt(b) + parseInt(c) + parseInt(d);
 }
-const csum = curry(sum);
+const csum = curry(sum); 
 console.log(csum(1, 2, 5)(2)); //3
 
 

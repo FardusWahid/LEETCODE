@@ -7,18 +7,18 @@ class Animal {
         this.name = name;
         this.age = age;
         // Private field (modern JS)
-        #energy = 100; 
+        _energy = 100; 
     }
 
     // Public method
     eat(food) {
         console.log(`${this.name} eats ${food}`);
-        this.#energy += 10;
+        this._energy += 10;
     }
 
     // Getter/Setter
-    get energy() { return this.#energy; }
-    set energy(value) { this.#energy = Math.max(0, value); }
+    get energy() { return this._energy; }
+    set energy(value) { this._energy = Math.max(0, value); }
 
     // Static method
     static describe() { console.log('Animals are living beings'); }
@@ -225,33 +225,33 @@ concrete.abstractMethod();
 
 // Private Fields & Methods (Modern JS)
 class BankAccount {
-    #balance = 0;
+    _balance = 0;
     
     deposit(amount) {
         if (amount > 0) {
-            this.#balance += amount;
+            this._balance += amount;
         }
     }
     
     withdraw(amount) {
-        if (amount <= this.#balance) {
-            this.#balance -= amount;
+        if (amount <= this._balance) {
+            this._balance -= amount;
         }
     }
     
-    getBalance() { return this.#balance; }
+    getBalance() { return this._balance; }
 }
 
 const account = new BankAccount();
 account.deposit(100);
 account.withdraw(50);
 console.log(account.getBalance()); // 50
-// console.log(account.#balance); // SyntaxError: Private field '#balance'
+// console.log(account._balance); // SyntaxError: Private field '_balance'
 
 // Static Blocks (ES2022)
 class TemperatureConverter {
-    static #celsiusToFahrenheit(c) { return (c * 9/5) + 32; }
-    static #fahrenheitToCelsius(f) { return (f - 32) * 5/9; }
+    static _celsiusToFahrenheit(c) { return (c * 9/5) + 32; }
+    static _fahrenheitToCelsius(f) { return (f - 32) * 5/9; }
     
     static {
         console.log('Static block executed');
